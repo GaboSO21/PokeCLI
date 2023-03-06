@@ -2,7 +2,6 @@ import { Pokemon } from './models/pokemon.js';
 import { inquireMenu, leerInput, pausa } from "./helpers/inquire.js";
 
 
-
 const main = async () => {
 
     let opt = 0;
@@ -22,7 +21,11 @@ const main = async () => {
                 const data = await pokemon.buscarPokemon(pokemon);
 
                 if (data) {
-                    console.log(data);
+
+                    // console.log(data);
+
+                    pokemon.printStats();
+
                 }
 
                 await pausa();
