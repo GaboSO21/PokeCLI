@@ -4,10 +4,11 @@ import colors from 'colors';
 export class Pokemon {
 
     pokeURl = '';
-    pokeName;
+    pokeName = '';
+    id;
     stats = [];
     types = [];
-    versions = {};
+    abilities = [];
 
     constructor(pokemon = '') {
 
@@ -16,16 +17,20 @@ export class Pokemon {
 
     }
 
+    set pokeAbilities(value) {
+        this.abilities = value;
+    }
+
+    set pokeId(value) {
+        this.id = value;
+    }
+
     set pokeTypes(value) {
         this.types = value;
     }
 
     set pokeStats(value) {
         this.stats = value;
-    }
-
-    set pokeVersions(value) {
-        this.versions = value;
     }
 
     async buscarPokemon() {
@@ -38,11 +43,13 @@ export class Pokemon {
 
             const resp = await instance.get()
 
-            this.pokeVersions = resp.data.versions;
+            this.pokeId = resp.data.id;
+            this.pokeAbilities = resp.data.abilities;
             this.pokeStats = resp.data.stats;
             this.pokeTypes = resp.data.types;
 
             return resp.data;
+
         } catch (error) {
 
             console.log('Pokemon not found.')
@@ -53,27 +60,42 @@ export class Pokemon {
 
     printStats() {
         console.log(`${colors.yellow('  Stats')}`);
-        console.log(`${colors.yellow('==========')}`);
+        console.log(`${colors.red('===================')}`);
         this.stats.forEach((stat, i) => {
-            console.log(`${colors.red((i + 1) + '.')} ${stat.stat.name} :: ${stat.base_stat}`)
+            console.log(`${colors.yellow((i + 1) + '.')} ${stat.stat.name} :: ${stat.base_stat}`)
         })
         console.log();
     }
 
     printTypes() {
         console.log(`${colors.yellow('  Types')}`);
-        console.log(`${colors.yellow('==========')}`);
+        console.log(`${colors.red('===================')}`);
         this.types.forEach((type, i) => {
             const typeName = type.type.name;
-            console.log(`${colors.red((i + 1) + '.')} ${typeName}`);
+            console.log(`${colors.yellow((i + 1) + '.')} ${typeName}`);
         })
         console.log();
     }
 
     printName() {
+        console.log(`${colors.yellow('  Id')}`);
+        console.log(`${colors.red('===================')}`);
+        console.log(`${colors.white(this.id)}`);
+        console.log();
         console.log(`${colors.yellow('  Name')}`);
-        console.log(`${colors.yellow('==========')}`);
-        console.log(`${colors.red(this.pokeName.toUpperCase())}`);
+        console.log(`${colors.red('===================')}`);
+        console.log(`${colors.white(this.pokeName.toUpperCase())}`);
+        console.log();
+    }
+
+    printAbilities() {
+        console.log(`${colors.yellow('  Abilities')}`);
+        console.log(`${colors.red('===================')}`);
+        this.abilities.forEach((ab, i) => {
+            console.log(`${colors.yellow(i + 1)} ${'Abilitiy:'.random} ${ab.ability.name}`)
+            console.log(`${'Hidden:'.yellow} ${ab.is_hidden}`)
+            console.log('--------------'.yellow);
+        })
         console.log();
     }
 

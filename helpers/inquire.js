@@ -5,7 +5,7 @@ const optPausa = [
   {
     type: 'input',
     name: 'pausa',
-    message: `Press ${'ENTER'.magenta} to continue...`,
+    message: `Press ${'ENTER'.yellow} to continue...`,
     waitUserInput: true
   }
 ]
@@ -54,7 +54,7 @@ export const leerInput = async (message) => {
       message,
       validate(value) {
         if (value.length === 0) {
-          return 'Por favor ingrese un valor';
+          return 'Please enter a value';
         }
 
         return true;
@@ -73,11 +73,15 @@ const tituloMenu = () => {
   return new Promise((resolve) => {
 
     console.clear();
-    const divisorArriba = console.log('====================='.yellow);
-    const salida = console.log('Seleccione una opcion'.red);
-    const divisor = console.log('====================='.yellow);
+    console.log('              _'.yellow);
+    console.log('  _ __   ___ | | _____ _ __ ___   ___  _ __  '.yellow);
+    console.log(' |  _ | | _ || || | _ |  _   _  || _ ||  _  |'.yellow);
+    console.log(' | |_) | (_) |   <| __/ | | | | | (_) | | | |'.yellow);
+    console.log(' | .__/ |___/|_||_|___|_| |_| |_||___/|_| |_|'.yellow);
+    console.log(' |_|  '.yellow);
+    const divisor = console.log('<=============================================>'.red);
 
-    resolve(divisorArriba, salida, divisor);
+    resolve(divisor);
 
   });
 

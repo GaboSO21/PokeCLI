@@ -15,21 +15,18 @@ const main = async () => {
 
         switch (opt) {
             case 1:
-                const input = await leerInput('Enter a pokemon name');
+                const input = await leerInput('Enter a pokemon name:');
                 const pokemon = new Pokemon(input);
 
                 const data = await pokemon.buscarPokemon(pokemon);
 
                 if (data) {
 
-                    console.clear();
-                    // console.log(data);
-                    console.log(pokemon.versions);
-                    // pokemon.printName();
-                    // pokemon.printTypes();
-                    // pokemon.printStats();
-                    // console.log(pokemon.versions);
-                    ;
+                    // console.log(data.abilities);
+                    pokemon.printName();
+                    pokemon.printAbilities();
+                    pokemon.printTypes();
+                    pokemon.printStats();
                 }
 
                 await pausa();
