@@ -53,16 +53,21 @@ export class EvoChain {
 
             if (idx === 0) {
                 let name = obj.species.name;
+                let details = arr[0].evolution_details[0];
                 console.log();
                 console.log(`\t${colors.yellow(name.replace(name.charAt(0), name.charAt(0).toUpperCase()))}`);
+                this.printTrigger(details, details.trigger.name);
                 console.log(`\t${'   |   '.red}`);
                 console.log(`\t${'   |   '.red}`);
                 console.log(`\t${'   v   '.red}`);
                 return this.printChain({}, arr, 1);
             } else {
                 let name = arr[0].species.name;
+                let evolution = arr[0].evolves_to;
                 console.log(`\t${colors.yellow(name.replace(name.charAt(0), name.charAt(0).toUpperCase()))}`);
-                if (arr[0].evolves_to.length !== 0) {
+                if (evolution.length !== 0) {
+                    let details = arr[0].evolves_to[0].evolution_details[0];
+                    this.printTrigger(details, details.trigger.name);
                     console.log(`\t${'   |   '.red}`);
                     console.log(`\t${'   |   '.red}`);
                     console.log(`\t${'   v   '.red}`);
@@ -73,6 +78,20 @@ export class EvoChain {
                 }
             }
 
+        }
+
+    }
+
+    printTrigger(obj = {}, trigger = '') {
+
+        switch (trigger) {
+            case "level-up":
+                console.log(`\t${colors.white(trigger)}`);
+                console.log(`\tLvl - ${obj.min_level}`);
+                break;
+            default:
+                console.log(`\t${colors.white(trigger)}`);
+                break;
         }
 
     }

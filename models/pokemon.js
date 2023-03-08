@@ -33,7 +33,7 @@ export class Pokemon {
         this.stats = value;
     }
 
-    async buscarPokemon() {
+    async searchPokemon() {
 
         const instance = axios.create({
             baseURL: this.pokeURl,

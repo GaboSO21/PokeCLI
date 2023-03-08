@@ -19,7 +19,7 @@ const main = async () => {
                 const inputPoke = await leerInput('Enter a pokemon name:');
                 const pokemon = new Pokemon(inputPoke);
 
-                const data = await pokemon.buscarPokemon();
+                const data = await pokemon.searchPokemon();
 
                 if (data) {
 
@@ -40,9 +40,9 @@ const main = async () => {
                 const evoData = await chain.searchChain()
 
                 if (evoData) {
+
                     chain.printChain(evoData, chain.evolution);
-                    // console.log(evoData);
-                    // console.log(chain.evolution[0].evolves_to);
+
                 }
 
                 await pausa();
