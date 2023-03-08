@@ -12,7 +12,7 @@ export class Pokemon {
 
     constructor(pokemon = '') {
 
-        this.pokeURl = `https://pokeapi.co/api/v2/pokemon/${pokemon.toLowerCase()}`;
+        this.pokeURl = `https://pokeapi.co/api/v2/pokemon/${pokemon.replace(' ', '-').toLowerCase()}`;
         this.pokeName = pokemon;
 
     }
