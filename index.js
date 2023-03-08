@@ -22,10 +22,14 @@ const main = async () => {
 
                 if (data) {
 
+                    console.clear();
                     // console.log(data);
-
-                    pokemon.printStats();
-
+                    console.log(pokemon.versions);
+                    // pokemon.printName();
+                    // pokemon.printTypes();
+                    // pokemon.printStats();
+                    // console.log(pokemon.versions);
+                    ;
                 }
 
                 await pausa();
