@@ -1,5 +1,6 @@
 import { Pokemon } from './models/pokemon.js';
 import { inquireMenu, leerInput, pausa } from "./helpers/inquire.js";
+import { EvoChain } from './models/evo-chain.js';
 
 
 const main = async () => {
@@ -15,22 +16,36 @@ const main = async () => {
 
         switch (opt) {
             case 1:
-                const input = await leerInput('Enter a pokemon name:');
-                const pokemon = new Pokemon(input);
+                const inputPoke = await leerInput('Enter a pokemon name:');
+                const pokemon = new Pokemon(inputPoke);
 
-                const data = await pokemon.buscarPokemon(pokemon);
+                const data = await pokemon.searchPokemon();
 
                 if (data) {
 
-                    // console.log(data.abilities);
                     pokemon.printName();
                     pokemon.printAbilities();
                     pokemon.printTypes();
                     pokemon.printStats();
+
                 }
 
                 await pausa();
 
+                break;
+            case 2:
+                const inputEvo = await leerInput('Enter a pokemon name:');
+                const chain = new EvoChain(inputEvo);
+
+                const evoData = await chain.searchChain()
+
+                if (evoData) {
+
+                    chain.printChain(evoData, chain.evolution);
+
+                }
+
+                await pausa();
 
                 break;
         }

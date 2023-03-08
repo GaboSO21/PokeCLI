@@ -21,6 +21,10 @@ const opts = [
         value: 1
       },
       {
+        name: '2.Search evolution chain',
+        value: 2
+      },
+      {
         name: '0.Exit',
         value: 0
       }
