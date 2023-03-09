@@ -21,7 +21,7 @@ git clone https://github.com/GaboSO21/PokeCLI.git
 Enter the directory:
 
 ```shell
-cd PokeCLI.git
+cd PokeCLI/
 ```
 Execute index.js with node:
 
