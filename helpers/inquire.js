@@ -25,6 +25,10 @@ const opts = [
         value: 2
       },
       {
+        name: '3.Search a berry',
+        value: 3
+      },
+      {
         name: '0.Exit',
         value: 0
       }

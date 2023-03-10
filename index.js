@@ -1,6 +1,7 @@
 import { Pokemon } from './models/pokemon.js';
 import { inquireMenu, leerInput, pausa } from "./helpers/inquire.js";
 import { EvoChain } from './models/evo-chain.js';
+import { Berry } from './models/berry.js';
 
 
 const main = async () => {
@@ -43,6 +44,19 @@ const main = async () => {
 
                     chain.printChain(evoData, chain.evolution);
 
+                }
+
+                await pausa();
+
+                break;
+            case 3:
+                const inputBerry = await leerInput('Enter a berry name:');
+                const berry = new Berry(inputBerry);
+
+                const berryData = await berry.searchBerry();
+
+                if (berryData) {
+                    console.log(berryData);
                 }
 
                 await pausa();
