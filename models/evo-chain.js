@@ -1,7 +1,7 @@
-import axios from "axios";
-import colors from 'colors';
+const axios = require('axios');
+const colors = require('colors');
 
-export class EvoChain {
+class EvoChain {
 
     pokeURL = '';
     evolution = [];
@@ -98,7 +98,9 @@ export class EvoChain {
 
 }
 
-
+module.exports = {
+    EvoChain
+}
 
 
 

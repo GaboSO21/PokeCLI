@@ -1,5 +1,5 @@
-import colors from 'colors';
-import inquirer from 'inquirer';
+const inquirer = require('inquirer');
+const colors = require('colors');
 
 const optPausa = [
   {
@@ -36,7 +36,7 @@ const opts = [
   }
 ];
 
-export const inquireMenu = async () => {
+const inquireMenu = async () => {
 
   await tituloMenu();
   const { opcion } = await inquirer.prompt(opts);
@@ -45,7 +45,7 @@ export const inquireMenu = async () => {
 
 }
 
-export const pausa = async () => {
+const pausa = async () => {
 
   const opcion = await inquirer.prompt(optPausa);
 
@@ -53,7 +53,7 @@ export const pausa = async () => {
 
 }
 
-export const leerInput = async (message) => {
+const leerInput = async (message) => {
 
   const question = [
     {
@@ -95,7 +95,7 @@ const tituloMenu = () => {
 
 }
 
-export const listadoLugares = async (lugares = []) => {
+const listadoLugares = async (lugares = []) => {
 
   const choices = lugares.map((lugar, idx) => {
 
@@ -125,7 +125,7 @@ export const listadoLugares = async (lugares = []) => {
 
 }
 
-export const mostrarListadoChecklist = async (tareas = []) => {
+const mostrarListadoChecklist = async (tareas = []) => {
 
   const choices = tareas.map((tarea, idx) => {
 
@@ -151,7 +151,7 @@ export const mostrarListadoChecklist = async (tareas = []) => {
 
 }
 
-export const confirmar = async (message) => {
+const confirmar = async (message) => {
 
   const question = [
     {

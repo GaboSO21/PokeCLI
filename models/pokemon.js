@@ -1,7 +1,7 @@
-import axios from "axios";
-import colors from 'colors';
+const axios = require('axios');
+const colors = require('colors');
 
-export class Pokemon {
+class Pokemon {
 
     pokeURl = '';
     pokeName = '';
@@ -59,22 +59,24 @@ export class Pokemon {
     }
 
     printStats() {
-        console.log(`${colors.yellow('  Stats')}`);
-        console.log(`${colors.red('===================')}`);
+        let reply = ``;
         this.stats.forEach((stat, i) => {
-            console.log(`${colors.yellow((i + 1) + '.')} ${stat.stat.name} :: ${stat.base_stat}`)
+
+            reply += `${((i + 1) + '.')} ${stat.stat.name} :: ${stat.base_stat}\n`;
+
         })
-        console.log();
+        return reply;
     }
 
     printTypes() {
-        console.log(`${colors.yellow('  Types')}`);
-        console.log(`${colors.red('===================')}`);
+        let reply = ``;
         this.types.forEach((type, i) => {
+
             const typeName = type.type.name;
-            console.log(`${colors.yellow((i + 1) + '.')} ${typeName}`);
+            reply += `${((i + 1) + '.')} ${typeName} \n`;
+
         })
-        console.log();
+        return reply;
     }
 
     printName() {
@@ -89,15 +91,15 @@ export class Pokemon {
     }
 
     printAbilities() {
-        console.log(`${colors.yellow('  Abilities')}`);
-        console.log(`${colors.red('===================')}`);
+        let reply = ``;
         this.abilities.forEach((ab, i) => {
-            console.log(`${colors.yellow(i + 1)} ${'Abilitiy:'.random} ${ab.ability.name}`)
-            console.log(`${'Hidden:'.yellow} ${ab.is_hidden}`)
-            console.log('--------------'.yellow);
+            reply += `${((i + 1) + '.')} Ability: ${ab.ability.name}\n   Hidden: ${ab.is_hidden}\n--------------------------\n`;
         })
-        console.log();
+        return reply;
     }
 
 }
 
+module.exports = {
+    Pokemon
+}

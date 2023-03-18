@@ -1,7 +1,7 @@
-import axios from "axios";
-import colors from 'colors';
+const axios = require('axios');
+const colors = require('colors');
 
-export class Berry {
+class Berry {
 
   pokeURL = '';
 
@@ -17,9 +17,21 @@ export class Berry {
 
     try {
 
-      const resp = await instance.get()
+      const resp = await instance.get();
+      const { url } = resp.data.item;
 
-      return resp.data;
+      const itemInstance = axios.create({
+        baseURL: url,
+      })
+
+      const itemResp = await itemInstance.get();
+
+      return {
+
+        berry: resp.data,
+        berryImg: itemResp.data.sprites.default,
+
+      };
 
     } catch (error) {
 
@@ -31,3 +43,6 @@ export class Berry {
 
 }
 
+module.exports = {
+  Berry
+}
