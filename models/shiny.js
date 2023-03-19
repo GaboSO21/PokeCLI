@@ -1,5 +1,4 @@
 const axios = require('axios');
-const colors = require('colors');
 
 class Shiny {
 

@@ -1,5 +1,4 @@
 const axios = require('axios');
-const colors = require('colors');
 
 class Pokemon {
 
@@ -13,7 +12,7 @@ class Pokemon {
     constructor(pokemon = '') {
 
         this.pokeURl = `https://pokeapi.co/api/v2/pokemon/${pokemon.replace(' ', '-').toLowerCase()}`;
-        this.pokeName = pokemon;
+        this.pokeName = pokemon.replace(pokemon.charAt(0), pokemon.charAt(0).toUpperCase());
 
     }
 
@@ -60,11 +59,16 @@ class Pokemon {
 
     printStats() {
         let reply = ``;
+        let total = 0;
         this.stats.forEach((stat, i) => {
 
             reply += `${((i + 1) + '.')} ${stat.stat.name} :: ${stat.base_stat}\n`;
+            total += stat.base_stat
 
         })
+
+        reply += `${'Total:'} :: ${total}\n`;
+
         return reply;
     }
 
@@ -77,17 +81,6 @@ class Pokemon {
 
         })
         return reply;
-    }
-
-    printName() {
-        console.log(`${colors.yellow('  Id')}`);
-        console.log(`${colors.red('===================')}`);
-        console.log(`${colors.white(this.id)}`);
-        console.log();
-        console.log(`${colors.yellow('  Name')}`);
-        console.log(`${colors.red('===================')}`);
-        console.log(`${colors.white(this.pokeName.toUpperCase())}`);
-        console.log();
     }
 
     printAbilities() {

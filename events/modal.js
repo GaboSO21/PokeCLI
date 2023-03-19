@@ -2,21 +2,24 @@ const { Pokemon } = require('../models/pokemon');
 const { Berry } = require('../models/berry');
 const { Shiny } = require('../models/shiny');
 
-const { Events, Client, IntentsBitField } = require('discord.js');
+const { EmbedBuilder } = require('discord.js');
 
-const client = new Client({
-    intents: [
-        IntentsBitField.Flags.Guilds,
-        IntentsBitField.Flags.GuildMessages,
-        IntentsBitField.Flags.GuildMembers,
-        IntentsBitField.Flags.DirectMessages,
-        IntentsBitField.Flags.MessageContent
-    ]
+const createEmbed = (name = '', img = '', types, stats, abilities) => {
+
+    const embed = new EmbedBuilder()
+        .setColor('Red')
+        .setTitle(name)
+        .setAuthor({ name: 'Gabriel Sanchez - PokeCLI' })
+        .addFields({ name: '> Types', value: `${'```'}${types}${'```'}`, inline: false })
+        .addFields({ name: '> Stats', value: `${'```'}${stats}${'```'}`, inline: false })
+        .addFields({ name: '> Abilities', value: `${'```'}${abilities}${'```'}`, inline: false })
+        .setThumbnail('https://dnd-wiki.org/w/images/thumb/2/23/Platinumdex.png/600px-Platinumdex.png')
+        .setImage(img)
+        .setTimestamp()
+
+    return embed;
+
 }
-);
-
-require('dotenv').config();
-client.login(process.env.CLIENT_TOKEN);
 
 const submitModal = async (interaction, i = 1) => {
 
@@ -36,18 +39,7 @@ const submitModal = async (interaction, i = 1) => {
 
             } else {
 
-                interaction.reply(`${data.sprites.front_default}`);
-
-                client.on(Events.MessageCreate, async (msg) => {
-
-                    if (i === 1) {
-                        msg.reply(`${'> TYPES:'}\n${'```'}${pokemon.printTypes()}${'```'}
-                                       ${'> BASE STATS:'}\n${'```'}${pokemon.printStats()}${'```'}
-                                       ${'> ABILITIES:'}\n${'```'}${pokemon.printAbilities()}${'```'}`);
-                        i++;
-                    }
-
-                });
+                interaction.reply({ embeds: [createEmbed(pokemon.pokeName, data.sprites.front_default, pokemon.printTypes(), pokemon.printStats(), pokemon.printAbilities())] });
 
             }
             break;
