@@ -1,39 +1,30 @@
 <div align="center">
   <h1> PokeCLI </h1>
   <img alt="Open Sauced" src="https://dnd-wiki.org/w/images/thumb/2/23/Platinumdex.png/600px-Platinumdex.png" width="300px">
-  <p> A lightwheight pokedex on your terminal! </p>
+  <p> A pokedex discord bot! </p>
   </div>
 
-## Prerequisites
+## Use
 
-In order to run the terminal pokedex you need the following software installed in your system:
-
-- `node>=16.7.0`
-- `npm>=8.0.0`
-
-## Local use
-
-Clone the repo:
+Invite the bot:
 
 ```shell
-git clone https://github.com/GaboSO21/PokeCLI.git
+https://discord.com/api/oauth2/authorize?client_id=1086447561038123099&permissions=534723950656&scope=bot
 ```
-Enter the directory:
+Use command and enter a pokemon name:
 
 ```shell
-cd PokeCLI/
-```
-Execute index.js with node:
-
-```shell
-node index
+/pokemon
 ```
 Enjoy!
 
 ## Available features
 
  * Search any pokemon and visualize some data 
- * Search evolution chains of pokemons and see their triggers 
+ * TODO: Berry lookup
+ * TODO: Item lookup
+ * TODO: Shiny lookup
+ * TODO: Evolution chain
 
 ## LICENSE
 
