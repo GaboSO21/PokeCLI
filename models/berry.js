@@ -3,9 +3,18 @@ const axios = require('axios');
 class Berry {
 
   pokeURL = '';
+  berryName = '';
+  effect = '';
 
   constructor(berry = '') {
+
     this.pokeURl = `https://pokeapi.co/api/v2/berry/${berry.replace(' ', '-').toLowerCase()}`;
+    this.berryName = berry.replace(berry.charAt(0), berry.charAt(0).toUpperCase()) + ' Berry';
+
+  }
+
+  set berryEffect(value) {
+    this.effect = value.effect_entries[0].effect;
   }
 
   async searchBerry() {
@@ -25,10 +34,13 @@ class Berry {
 
       const itemResp = await itemInstance.get();
 
+      this.berryEffect = itemResp.data;
+
       return {
 
         berry: resp.data,
         berryImg: itemResp.data.sprites.default,
+        itemData: itemResp.data,
 
       };
 

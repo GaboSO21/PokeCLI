@@ -8,7 +8,7 @@ class Shiny {
     constructor(pokemon = '') {
 
         this.pokeURl = `https://pokeapi.co/api/v2/pokemon/${pokemon.replace(' ', '-').toLowerCase()}`;
-        this.pokeName = pokemon;
+        this.pokeName = 'Shiny ' + pokemon.replace(pokemon.charAt(0), pokemon.charAt(0).toUpperCase());
 
     }
 
