@@ -1,25 +1,7 @@
 const { Pokemon } = require('../models/pokemon');
 const { Berry } = require('../models/berry');
 const { Shiny } = require('../models/shiny');
-
-const { EmbedBuilder } = require('discord.js');
-
-const createEmbed = (name = '', img = '', types, stats, abilities) => {
-
-    const embed = new EmbedBuilder()
-        .setColor('Red')
-        .setTitle(name)
-        .setAuthor({ name: 'Gabriel Sanchez - PokeCLI' })
-        .addFields({ name: '> Types', value: `${'```'}${types}${'```'}`, inline: false })
-        .addFields({ name: '> Stats', value: `${'```'}${stats}${'```'}`, inline: false })
-        .addFields({ name: '> Abilities', value: `${'```'}${abilities}${'```'}`, inline: false })
-        .setThumbnail('https://dnd-wiki.org/w/images/thumb/2/23/Platinumdex.png/600px-Platinumdex.png')
-        .setImage(img)
-        .setTimestamp()
-
-    return embed;
-
-}
+const { pokemonEmbed, shinyEmbed, berryEmbed } = require('../events/embeds');
 
 const submitModal = async (interaction, i = 1) => {
 
@@ -39,7 +21,7 @@ const submitModal = async (interaction, i = 1) => {
 
             } else {
 
-                interaction.reply({ embeds: [createEmbed(pokemon.pokeName, data.sprites.front_default, pokemon.printTypes(), pokemon.printStats(), pokemon.printAbilities())] });
+                interaction.reply({ embeds: [pokemonEmbed(pokemon.pokeName, data.sprites.front_default, pokemon.printTypes(), pokemon.printStats(), pokemon.printAbilities())] });
 
             }
             break;
@@ -57,7 +39,7 @@ const submitModal = async (interaction, i = 1) => {
 
             } else {
 
-                interaction.reply(shinyImg);
+                interaction.reply({ embeds: [shinyEmbed(shiny.pokeName, shinyImg)] });
 
             }
 
@@ -76,7 +58,7 @@ const submitModal = async (interaction, i = 1) => {
 
             } else {
 
-                interaction.reply(berryData.berryImg);
+                interaction.reply({ embeds: [berryEmbed(berry.berryName, berryData.berryImg, berry.effect)] });
 
             }
 
@@ -111,19 +93,3 @@ module.exports = {
     submitModal,
     showModal
 }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
