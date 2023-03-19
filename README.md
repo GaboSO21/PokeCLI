@@ -11,20 +11,33 @@ Invite the bot:
 ```shell
 https://discord.com/api/oauth2/authorize?client_id=1086447561038123099&permissions=534723950656&scope=bot
 ```
-Use command and enter a pokemon name:
+Use a command and enter information:
 
 ```shell
 /pokemon
+```
+```shell
+/shiny
+```
+```shell
+/berry
 ```
 Enjoy!
 
 ## Available features
 
  * Search any pokemon and visualize some data 
- * TODO: Berry lookup
+ * Search any berry and see its effect
+ * Search a shiny version of a pokemon
  * TODO: Item lookup
- * TODO: Shiny lookup
  * TODO: Evolution chain
+
+## Screenshots
+<div align="center">
+<img src="https://github.com/GaboSO21/PokeCLI/blob/050d13f1a9a4700f79c8decb24960a09eeed299a/imgs/pokemon.png"/>
+<img src="https://github.com/GaboSO21/PokeCLI/blob/050d13f1a9a4700f79c8decb24960a09eeed299a/imgs/shiny.png"/>
+<img src="https://github.com/GaboSO21/PokeCLI/blob/050d13f1a9a4700f79c8decb24960a09eeed299a/imgs/berry.png"/>
+</div>
 
 ## LICENSE
 
